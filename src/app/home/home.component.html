@@ -1,0 +1,194 @@
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Book</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form #userForm="ngForm" (submit)="add(userForm)">
+
+                    <div class="form-group">
+                        <label>Book Name: </label>
+                        <input type="text" required #empName="ngModel" class="form-control" style="width:250px" ngModel
+                            name="bookName" [ngClass]="{ 'is-invalid': userForm.submitted && empName.invalid }">
+                        <div *ngIf="empName.invalid && (empName.dirty || empName.touched)" class="alert alert-danger">
+                            <div *ngIf="empName.errors.required">
+                                Book Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price: </label>
+                        <input type="number" required #empContact="ngModel" class="form-control" style="width:250px"
+                            ngModel name="price" [ngClass]="{ 'is-invalid': userForm.submitted && empContact.invalid }">
+                        <div *ngIf="empContact.invalid && (empContact.dirty || empContact.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="empContact.errors.required">
+                                Price is required
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category: </label>
+                        <input type="text" required #empEmail="ngModel" class="form-control" style="width:250px" ngModel
+                            name="category" [ngClass]="{ 'is-invalid': userForm.submitted && empEmail.invalid }">
+                        <div *ngIf="empEmail.invalid && (empEmail.dirty || empEmail.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="empEmail.errors.required">
+                                Category is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Author: </label>
+                        <input type="text" required #empBalance="ngModel" class="form-control" style="width:250px"
+                            ngModel name="author"
+                            [ngClass]="{ 'is-invalid': userForm.submitted && empBalance.invalid }">
+                        <div *ngIf="empBalance.invalid && (empBalance.dirty || empBalance.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="empBalance.errors.required">
+                                Author is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]='userForm.form.invalid' class="btn btn-success">Add</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+       <!-- <div id="inputText">
+           Hi There hello Hello there
+       </div>  -->
+    <nav style="background-color: black;">
+        <button type="button" class="btn btn-sm btn-outline-danger" (click)="logout()">Logout</button>
+        <button style="float: left;" type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
+            data-target="#myModal" title="Add Book" (click)="add(n)">Add Book</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <strong style="color: white;">Welcome, Admin </strong>
+
+        <!-- search area  -->
+        <form class="form-inline" style="float: right ;">
+            <div class="form-group">
+                <input style="height: 30px;" class="form-control mr-sm-2" type="text" name="searchword"
+                    [(ngModel)]="searchword" (ngModelChange)="search(searchword)" placeholder="Search"
+                    aria-label="Search">
+            </div>
+            <!-- <button class="btn btn-sm btn-outline-light" type="submit" (click)="high()">Search</button> -->
+        </form>
+    </nav>
+
+        <!-- test -->
+        <!-- <h2>User Details</h2>  
+        <mat-form-field>  
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">  
+        </mat-form-field>   -->
+          
+        <!-- <div class="mat-elevation-z8">  
+          <table mat-table [dataSource]="dataSource" matSort>  
+          
+            <ng-container matColumnDef="Id">  
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>  
+              <td mat-cell *matCellDef="let n"> {{n.id}} </td>  
+            </ng-container>  
+          
+            <ng-container matColumnDef="Name">  
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Name </th>  
+              <td mat-cell *matCellDef="let n"> {{n.bookName}} </td>  
+            </ng-container>  
+          
+                <ng-container matColumnDef="Price">  
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>  
+                  <td mat-cell *matCellDef="let n"> {{n.price}} </td>  
+                </ng-container>  
+          
+           
+                <ng-container matColumnDef="Category">  
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>  
+                  <td mat-cell *matCellDef="let n"> {{n.category}} </td>  
+                </ng-container>  
+          
+                <ng-container matColumnDef="Author">  
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>  
+                  <td mat-cell *matCellDef="let n"> {{n.author}} </td>  
+                </ng-container>  
+    
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>  
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  
+          </table>  
+          
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>  
+        </div>  -->
+
+    <table class="table table-hover">
+        <th title="Click to sort" (click)="sort('Id','ASC')">Id <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"></i></th> 
+        <th title="Click to sort" (click)="sort('Name','DESC')">Name <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"></i></th>
+        <th title="Click to sort" (click)="sort('Price','DESC')">Price($) <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"></i></th>
+        <th title="Click to sort" (click)="sort('Category','DESC')">Category <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"></i></th>
+        <th title="Click to sort" (click)="sort('Author','DESC')">Author <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"></i></th>
+        <th>Actions</th>
+        
+        <tbody id="inputText">
+            <tr *ngFor="let n of employeeDetails">
+                <td *ngIf="n!==editEmployeeDetails">{{n.id}}</td>
+                <td *ngIf="n!==editEmployeeDetails">{{n.bookName}}</td>
+                <td *ngIf="n!==editEmployeeDetails">{{n.price}}</td>
+                <td *ngIf="n!==editEmployeeDetails">{{n.category}}</td>
+                <td *ngIf="n!==editEmployeeDetails">{{n.author}}</td>
+
+                <div class="test">
+                    <h6 *ngIf="n===editEmployeeDetails">
+                        <label *ngIf="n===editEmployeeDetails"><strong>Book Name:</strong></label>
+                        <input style="width: 200px;" *ngIf="n===editEmployeeDetails" [(ngModel)]="n.bookName"
+                            type="text" #empName="ngModel" [ngClass]="{ 'is-invalid': empName.invalid }"
+                            class="form-control" required></h6>
+
+                    <h6 *ngIf="n===editEmployeeDetails">
+                        <label *ngIf="n===editEmployeeDetails"><strong>Price:</strong></label>
+                        <input style="width: 70px;" *ngIf="n===editEmployeeDetails" [(ngModel)]="n.price" type="number"
+                            #empContact="ngModel" [ngClass]="{ 'is-invalid': empContact.invalid }" class="form-control"
+                            required></h6>
+
+                    <h6 *ngIf="n===editEmployeeDetails">
+                        <label *ngIf="n===editEmployeeDetails"><strong>Category:</strong></label>
+                        <input style="width: 200px;" *ngIf="n===editEmployeeDetails" [(ngModel)]="n.category"
+                            type="text" #empEmail="ngModel" [ngClass]="{ 'is-invalid': empEmail.invalid }"
+                            class="form-control" required></h6>
+
+                    <h6 *ngIf="n===editEmployeeDetails">
+                        <label *ngIf="n===editEmployeeDetails"><strong>Author:</strong></label>
+                        <input style="width: 200px;" *ngIf="n===editEmployeeDetails" [(ngModel)]="n.author" type="text"
+                            #empEmail="ngModel" [ngClass]="{ 'is-invalid': empEmail.invalid }" class="form-control"
+                            required></h6>
+
+
+                    <button type="button" style="margin-left: 20px; margin-top: 15px;" *ngIf="n===editEmployeeDetails"
+                        class="btn btn-md btn-success" title="Save" (click)="update()">Save</button>
+
+                    <div class="btn-group" *ngIf="n!==editEmployeeDetails">
+                        <td><button type="button" class="btn btn-sm btn-outline-warning" title="Edit"
+                                (click)="edit(n)">Edit</button>
+                        </td>
+                        <td><button type="button" class="btn btn-sm btn-outline-danger" title="Delete"
+                                (click)="delete(n)">Delete</button>
+                        </td>
+                    </div>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+    <br><br><br><br><br><br>
+</div>

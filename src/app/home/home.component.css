@@ -1,0 +1,50 @@
+th {
+   background-color:lightgray;
+}
+
+.test
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table td {
+    padding: 0.3rem;
+}
+
+.alert {
+    position: relative;
+    padding: .15rem 0.25rem;
+    width: 250px;
+}
+.ngx-text-highlight{
+    background:yellow;
+}
+span.markYellow {
+    background: yellow;
+    color: green;
+  }
+  
+  span.markBlue {
+    background: blue;
+    color: orange;
+  }
+
+  table {
+    width: 100%;
+  }
+  th{
+    width: fit-content;
+    cursor: pointer;  
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+
+/* .highlight {
+    background-color: red;
+    font-size: x-large;
+} */

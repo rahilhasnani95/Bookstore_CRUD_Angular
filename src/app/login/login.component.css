@@ -1,0 +1,10 @@
+body {
+	background-image: url("../../assets/images/LandingStock_image_26.jpg");
+        background-repeat:no-repeat;
+       background-size:cover;
+} 
+.alert {
+        position: relative;
+        padding: .30rem 0.30rem;
+        width: 320px;
+}

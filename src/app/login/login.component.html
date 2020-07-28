@@ -1,0 +1,45 @@
+<body>
+    <div class="container-fluid ">
+    <div class="row d-flex h-100">
+        <div class="col-md-4 mx-auto" style="height: 600px; padding-left: 70px;">
+            <br>
+            <h2>Login</h2>
+            <br>
+            <!-- <img src="../../assets/images/LandingStock_image_26.jpg"> -->
+
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="form-group">
+                   <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" required style="width: 320px;"
+                        minlength="4" [(ngModel)]="model.username" name="username" #username="ngModel">
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div *ngIf="username.errors.required">
+                            Username is required
+                        </div>
+                        <div *ngIf="username.errors.minlength">
+                            Username must be of atleast 4 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                 <label for="password">Password</label>
+                 <input type="password" class="form-control" id="password" required style="width: 320px;"
+                        minlength="4" [(ngModel)]="model.password" name="password" #password="ngModel">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.errors.required">
+                            Password is required
+                        </div>
+    
+                        <div *ngIf="password.errors.minlength">
+                            Password must be of atleast 4 characters
+                        </div>
+                    </div>
+                </div>
+    
+                <button type="submit" [disabled]="loginForm.form.invalid" class="btn btn-primary">Login</button>
+            </form>    
+            
+        </div>
+    </div>
+</div>
+</body>
